@@ -5,6 +5,55 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SITUASI</title>
   <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* Popup tambahan */
+    .popup {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.85);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .popup img {
+      max-width: 90%;
+      max-height: 85%;
+      border-radius: 10px;
+      box-shadow: 0 0 15px #000;
+    }
+
+    .popup .close-btn {
+      position: absolute;
+      top: 20px;
+      right: 40px;
+      color: white;
+      font-size: 32px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .rapor-btn {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 8px;
+      background: var(--accent-color);
+      color: white;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .rapor-btn:hover {
+      background: var(--accent-color-hover);
+    }
+  </style>
 </head>
 <body>
   <div class="container">
@@ -23,18 +72,46 @@
         <img src="assets/preview_sites.png" alt="Preview Portofolio Digital">
         <div class="overlay">Klik untuk melihat situs</div>
       </a>
+      <button class="rapor-btn" id="openRapor">Rapor Mutu Sekolah 2025</button>
     </div>
   </div>
+
+  <!-- ===== Popup Rapor Mutu ===== -->
+  <div id="popupRapor" class="popup">
+    <span class="close-btn" id="closePopup">&times;</span>
+    <img src="assets/rapor_mutu.jpg" alt="Rapor Mutu Sekolah 2025">
+  </div>
+
+  <!-- ===== Navigasi Global ===== -->
+  <nav class="nav-global">
+    <a href="index.html">🏠</a>
+    <a href="pendahuluan.html">Pendahuluan</a>
+    <a href="situasi.html" class="active">Situasi</a>
+    <a href="task.html">Task</a>
+    <a href="action.html">Action</a>
+    <a href="result.html">Result</a>
+    <a href="kesimpulan.html">Kesimpulan</a>
+    <a href="penutup.html">Penutup</a>
+  </nav>
+
+  <script>
+    const openRapor = document.getElementById("openRapor");
+    const popup = document.getElementById("popupRapor");
+    const closePopup = document.getElementById("closePopup");
+
+    openRapor.addEventListener("click", () => {
+      popup.style.display = "flex";
+    });
+
+    closePopup.addEventListener("click", () => {
+      popup.style.display = "none";
+    });
+
+    window.addEventListener("click", (e) => {
+      if (e.target === popup) {
+        popup.style.display = "none";
+      }
+    });
+  </script>
 </body>
 </html>
-<!-- ===== Navigasi Global ===== -->
-<nav class="nav-global">
-  <a href="index.html">🏠</a>
-  <a href="pendahuluan.html">Pendahuluan</a>
-  <a href="situasi.html">Situasi</a>
-  <a href="task.html">Task</a>
-  <a href="action.html">Action</a>
-  <a href="result.html">Result</a>
-  <a href="kesimpulan.html">Kesimpulan</a>
-  <a href="penutup.html">Penutup</a>
-</nav>
